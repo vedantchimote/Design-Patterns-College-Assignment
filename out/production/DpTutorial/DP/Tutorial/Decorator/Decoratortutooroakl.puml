@@ -1,0 +1,96 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+package Decorators
+{
+class Bleach
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+
+class Glitter
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+class Ribbion
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+class Vase
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+class Water
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+class BouquetDecorator
+{
+public cost() : int
+public name() : String
+public void decorate()
+}
+
+}
+
+Bleach --|> BouquetDecorator : extends
+Glitter --|> BouquetDecorator : extends
+Ribbion --|> BouquetDecorator : extends
+Vase --|> BouquetDecorator : extends
+Water --|> BouquetDecorator : extends
+
+class Bouquet
+{
+public void getDescription()
+    public void getCost()
+    public void decorate()
+}
+class Orchid
+{
+private BouquetDecorator bouquetDecorator
+   private int cost
+   public void getDescription()
+       public void getCost()
+       public void decorate()
+}
+class Rose
+{
+private BouquetDecorator bouquetDecorator
+    private int cost
+    public void getDescription()
+    public void getCost()
+    public void decorate()
+}
+class Sunflower
+{
+private BouquetDecorator bouquetDecorator
+    private int cost
+    public void getDescription()
+    public void getCost()
+    public void decorate()
+}
+
+Orchid --|> Bouquet : extends 
+Rose --|> Bouquet : extends
+Sunflower --|> Bouquet : extends
+
+class FlouristShop
+{
+ public static void main()
+
+}
+note right : Test Class
+
+
+@enduml

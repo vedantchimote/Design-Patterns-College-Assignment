@@ -1,0 +1,110 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+package
+{
+
+package Applications
+{
+
+class Application
+{
+
+}
+class MusicApp
+{
+public void playMusic()
+public void stopMusic()
+}
+class SportsTrackerApp
+{
+public void beginSportsTracking()
+public void endSportsTracking()
+}
+class Twitter
+{
+public void shareStatus()
+}
+
+}
+
+MusicApp --|> Application : extends
+SportsTrackerApp --|> Application : extends
+Twitter --|> Application : extends
+
+package Features
+{
+class Feature
+{
+
+}
+class GPS
+{
+public void turnOn()
+ public void turnOff()
+}
+class MobileData
+{
+ public void turnOn()
+ public void turnOff()
+}
+class Wifi
+{
+public void turnOn()
+ public void turnOff()
+}
+
+
+GPS --|> Feature : extends
+MobileData --|> Feature : extends
+Wifi --|> Feature : extends
+
+}
+
+}
+
+class Phone
+{
+private static Phone phone
+
+static Wifi wifi
+ static MobileData mobileData
+    static GPS gps
+    static MusicApp musicApp
+    static SportsTrackerApp sportsTrackerApp
+    static Twitter twitter
+
+    private Phone()
+    public static Phone getPhone()
+    public void leaveHome()
+    public void returnHome()
+}
+note bottom : facade
+
+
+MusicApp <.. Phone : has
+Twitter <.. Phone : has
+SportsTrackerApp <.. Phone : has
+GPS <.. Phone : has
+MobileData <.. Phone : has
+Wifi <.. Phone : has
+
+class Home
+{
+public static void main()
+}
+note bottom : Test class
+
+class Person
+{
+ Phone phone
+ public Person()
+}
+
+Person --> Phone : uses
+
+Person ..> Home : leaves/returns
+
+
+@enduml

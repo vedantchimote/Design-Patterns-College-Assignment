@@ -1,0 +1,25 @@
+@startuml
+
+class Constitution
+{
+PrimeMinister primeMinister
+public void set_rules()
+ public void give_permission()
+}
+class PrimeMinister
+{
+static private PrimeMinister primeMinister
+public String name
+private PrimeMinister()
+public static PrimeMinister getPrimeMinister()
+}
+Constitution "1" -- "1" PrimeMinister
+PrimeMinister --> PrimeMinister : returns
+class Test
+{
+public static void main()
+}
+
+Test --> Constitution : asks
+
+@enduml

@@ -1,0 +1,147 @@
+@startuml
+
+left to right direction
+package materials
+{
+abstract class Keys
+{
+public abstract Keys getKeys()
+}
+class MusicKeys
+{
+public String name
+public Keys getKeys()
+}
+class LightningKeys
+{
+public String name
+public Keys getKeys()
+}
+abstract class Wheels
+{
+public abstract Wheels getWheels()
+}
+class LightningWheels
+{
+public String name
+public Wheels getWheels()
+}
+class MusicWheels
+{
+public String name
+ public Wheels getWheels()
+}
+
+abstract class Wings
+{
+ public abstract Wings getWings()
+}
+class JetWings
+{
+public String name
+public Wings getWings()
+}
+class SuperJetWings
+{
+public String
+public Wings getWings()
+}
+
+}
+MusicKeys --|> Keys : extend
+LightningKeys --|> Keys : extends
+LightningWheels --|> Wheels : extends
+MusicWheels --|> Wheels : extends
+SuperJetWings --|> Wings : extends
+JetWings --|> Wings : extends
+
+package Toys
+{
+class Toy
+{
+ 
+}
+ class NewStyleCar
+ {
+ Keys key
+     Wheels wheel
+     public NewStyleCar()
+     public void prepare()
+     public void putPrice()
+ }
+ class NewStylePlane
+ {
+ Keys key
+     Wheels wheel
+     Wings wings
+     public NewStylePlane()
+     public void prepare()
+     public void putPrice()
+ }
+ class OldStyleCar
+ {
+  Keys key
+      Wheels wheel
+      public OldStyleCar()
+      public void prepare()
+      public void putPrice()
+ }
+ class OldStylePlane
+ {
+ Keys key
+      Wheels wheel
+      Wings wings
+      public OldStylePlane()
+      public void prepare()
+      public void putPrice()
+ }
+ class Car 
+ {
+ }
+ class Plane 
+ {
+ }
+ 
+}
+
+NewStyleCar --|> Toy : extends
+NewStylePlane --|> Toy : extends
+OldStylePlane --|> Toy : extends
+OldStyleCar --|> Toy : extends
+OldStyleCar ..|> Car : implements
+NewStyleCar ..|> Car : implements
+NewStylePlane ..|> Plane : implements
+OldStylePlane ..|> Plane : implements
+
+
+class ToyStore
+{
+Plane plane
+Car car
+public Plane getPlane()
+public Car getCar
+}
+
+ToyStore ..> Car : has
+ToyStore ..> Plane : has
+
+class Test
+{
+public static void main()
+}
+
+
+NewStyleCar ..> Keys : uses
+NewStylePlane ..> Keys : uses
+OldStylePlane ..> Keys : uses
+OldStyleCar ..> Keys : uses
+
+NewStyleCar ..> Wheels : uses
+NewStylePlane ..> Wheels : uses
+OldStyleCar ..> Wheels : uses
+OldStylePlane ..> Wheels : uses
+
+NewStylePlane ..> Wings : uses
+OldStylePlane ..> Wings : uses
+
+@enduml

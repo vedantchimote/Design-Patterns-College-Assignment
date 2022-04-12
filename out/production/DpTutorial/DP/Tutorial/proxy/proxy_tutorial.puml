@@ -1,0 +1,79 @@
+@startuml
+
+left to right direction
+
+class Computer
+{
+public static void main()
+}
+note right : Test Class
+
+interface Internet
+{
+void connectTo()
+}
+
+class ProxyInternet
+{
+ private RealInternet realInternet
+ private RestrictedInternet restrictedInternet
+ private static List<String> allowedSites_for_students
+ private static List<User> list_of_users
+ static{}
+ public void connect() throws Exception
+}
+note right : Proxy
+
+class RealInternet
+{
+void connectTo()
+}
+
+RealInternet --|> Internet
+RestrictedInternet --|> Internet
+
+class RestrictedInternet
+{
+void connectTo()
+}
+
+class AccessRestrictedException
+{
+public AccessRestrictedException()
+}
+note right : Custom defined exception
+
+
+package Users
+{
+ class User
+ {
+ abstract void useInternet() throws Exception
+ }
+ class Student
+ {
+  private ProxyInternet proxyInternet
+   public Student()
+  void useInternet() throws Exception
+ }
+
+ class Teacher
+ {
+ private ProxyInternet proxyInternet
+ public Teacher()
+ void useInternet() throws Exception
+ }
+
+ class NonTeachingStaffMember
+ {
+ private ProxyInternet proxyInternet
+ public NonTeachingStaffMember()
+ void useInternet() throws Exception
+ }
+
+}
+
+Student --|> User
+Teacher --|> User
+NonTeachingStaffMember--|> User
+@enduml

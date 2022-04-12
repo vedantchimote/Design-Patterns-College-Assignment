@@ -1,0 +1,70 @@
+@startuml
+
+left to right direction
+package Cakes
+{
+ abstract class Cake{
+ protected abstract void prepare()
+    protected abstract void description()
+    protected void bake()
+    protected void decorate()
+ }
+class BlackForestCake
+{
+public BlackForestCake()
+ public void prepare()
+ public void description()
+}
+class BlueBerryCake
+{
+public BlueBerryCake()
+ public void prepare()
+ public void description()
+}
+class PineappleCake
+{
+public PineappleCake()
+ public void prepare()
+ public void description()
+}
+class RedVelvetCake
+{
+public RedVelvetCake()
+public void prepare()
+ public void description()
+}
+}
+
+BlackForestCake --|> Cake : extends
+RedVelvetCake --|> Cake : extends
+PineappleCake --|> Cake : extends
+BlueBerryCake --|> Cake : extends
+
+package CakeFactory
+{
+abstract class CakeFactory
+{
+}
+ class ABCCakeFactory
+ {
+ public static Cake getCake()
+ }
+ class CakelinksCakeFactory
+ {
+ public static Cake getCake()
+ }
+
+}
+
+ABCCakeFactory --|> CakeFactory : extends
+ABCCakeFactory ..> Cake : has
+CakelinksCakeFactory ..> Cake : has
+CakelinksCakeFactory --|> CakeFactory : extends
+
+class CakeFactoryTest
+{
+public static void main()
+}
+note right : Main Method
+
+@enduml
